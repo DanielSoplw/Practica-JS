@@ -46,4 +46,38 @@ async function obtenerEstudiantes() {
     }
 }
 
+function mostrarEstudiantes(estudiantes) {
+
+    const tabla = document.querySelector(
+        "#tablaEstudiantes"
+    );
+
+    tabla.innerHTML = "";
+
+    estudiantes.forEach(estudiante => {
+
+        tabla.innerHTML += `
+            <tr>
+                <td>${estudiante.nombre}</td>
+                <td>${estudiante.correo}</td>
+                <td>${estudiante.programa}</td>
+                <td>${estudiante.estado}</td>
+                <td>
+                    <button
+                        onclick="editarEstudiante(${estudiante.id})"
+                    >
+                        Editar
+                    </button>
+
+                    <button
+                        onclick="eliminarEstudiante(${estudiante.id})"
+                    >
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
 obtenerEstudiantes();
